@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda - Nombre1 & Nombre2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faf5f0;
+            color: #555;
+        }
+        
+        .invitation-card {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('https://img.freepik.com/foto-gratis/alianzas-boda-manos-novia-novio-hermoso-ramo-novia-hecho-vegetacion-flores-blancas_8353-11212.jpg?t=st=1746713814~exp=1746717414~hmac=5470e3a431d58479533381230ebe2bb6c98e40d5e47cf11821d4d64a7bf3798e&w=1380');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .couple-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background-color: #e0c9b1;
+        }
+        
+        .divider-icon {
+            margin: 0 1rem;
+            color: #d4a373;
+            font-size: 1.2rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4a373;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .details-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 1rem;
+            padding: 0 2rem;
+        }
+        
+        .date-box {
+            background-color: #f8f1e9;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        .date-day {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #d4a373;
+            line-height: 1;
+        }
+        
+        .date-month {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4a373;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date-year {
+            font-size: 1rem;
+            color: #999;
+        }
+        
+        .location {
+            margin: 1rem 0;
+        }
+        
+        .location-button {
+            display: inline-block;
+            background-color: #e9c8a7;
+            color: #555;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem 0 1.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .location-button:hover {
+            background-color: #d4a373;
+            color: white;
+        }
+        
+        .rsvp-button {
+            display: inline-block;
+            background-color: #d4a373;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .rsvp-button:hover {
+            background-color: #c19160;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background-color: #f8f1e9;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        .gift-icon {
+            color: #d4a373;
+            margin: 0 0.5rem;
+        }
+        
+        .dress-code {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #888;
+        }
+        
+        /* Form styles */
+        .rsvp-form {
+            background-color: #f8f1e9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            background-color: white;
+        }
+        
+        .form-submit {
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .form-submit:hover {
+            background-color: #c19160;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-input {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="invitation-card">
+        <div class="header-image">
+            <h1 class="couple-names">Nombre1<br>&<br>Nombre2</h1>
+        </div>
+        
+        <div class="p-8">
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <p class="details-text">
+                Con gran alegría en nuestros corazones, tenemos el honor de invitarte a celebrar nuestro matrimonio.
+            </p>
+            
+            <div class="date-box">
+                <div class="date-month">Junio</div>
+                <div class="date-day">15</div> <br>
+                <div class="date-year">2029</div>
+            </div>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-icon">
+                    <i class="fas fa-church"></i>
+                </div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <h2 class="section-title">Ceremonia</h2>
+            <p class="details-text">
+                <strong>4:30 PM</strong><br>
+                Parroquia Santa María<br>
+                Calle Principal 123, Ciudad
+            </p>
+            <div class="text-center">
+                <button class="location-button" onclick="window.open('https://www.google.com/maps?q=Parroquia+Santa+María+Calle+Principal+123+Ciudad', '_blank')">
+                    <i class="fas fa-map-marker-alt"></i> Cómo llegar
+                </button>
+            </div>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-icon">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <h2 class="section-title">Recepción</h2>
+            <p class="details-text">
+                <strong>7:00 PM</strong><br>
+                Jardines del Paraíso<br>
+                Avenida Central 456, Ciudad
+            </p>
+            <div class="text-center">
+                <button class="location-button" onclick="window.open('https://www.google.com/maps?q=Jardines+del+Paraíso+Avenida+Central+456+Ciudad', '_blank')">
+                    <i class="fas fa-map-marker-alt"></i> Cómo llegar
+                </button>
+            </div>
+            
+            <!-- Formulario de confirmación de asistencia -->
+            <div class="rsvp-form">
+                <h2 class="section-title">Confirmar Asistencia</h2>
+                <form id="rsvp-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nombre completo</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Asistirás a nuestra boda?</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="confirm-yes" name="attendance" value="Sí, con mucho gusto asistiré" class="radio-input" required>
+                                <label for="confirm-yes">Sí, asistiré</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="confirm-no" name="attendance" value="Lamentablemente no podré asistir" class="radio-input">
+                                <label for="confirm-no">No podré asistir</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests" class="form-label">Número de personas (incluyéndote)</label>
+                        <select id="guests" class="form-select" required>
+                            <option value="1">1 persona</option>
+                            <option value="2">2 personas</option>
+                            <option value="3">3 personas</option>
+                            <option value="4">4 personas</option>
+                            <option value="5">5 personas</option>
+                            <option value="6">6+ personas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Mensaje para los novios (opcional)</label>
+                        <textarea id="message" class="form-input" rows="3" placeholder="Escribe aquí tu mensaje..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i> Enviar confirmación por WhatsApp
+                    </button>
+                </form>
+            </div>
+            
+            <p class="dress-code">
+                Código de vestimenta: Elegante
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>
+                "El amor no consiste en mirarse el uno al otro, sino en mirar juntos en la misma dirección"<br>
+                - Antoine de Saint-Exupéry
+            </p>
+            <p class="mt-4">
+                <i class="gift-icon fas fa-gift"></i>
+                Mesa de regalos disponible en tienda X
+                <i class="gift-icon fas fa-gift"></i>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // WhatsApp redirection with form data
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('message').value;
+            
+            // WhatsApp number provided
+            const whatsappNumber = '573014287828';
+            
+            // Create the WhatsApp message
+            let whatsappMessage = `¡Hola Pepito y Pepita! Soy ${name}.\n`;
+            whatsappMessage += `*Confirmación de asistencia:* ${attendance}\n`;
+            whatsappMessage += `*Número de personas:* ${guests}\n`;
+            if (message) {
+                whatsappMessage += `*Mensaje:* ${message}\n`;
+            }
+            whatsappMessage += `¡Felicitaciones por su boda!`;
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+            
+            // Reset the form
+            this.reset();
+            
+            // Show confirmation (optional)
+            alert('Gracias por confirmar tu asistencia. Serás redirigido a WhatsApp para completar el proceso.');
+        });
+    </script>
+</body>
+</html>
